@@ -16,4 +16,4 @@ In this way, we can perform the necessary transformation process directly with S
 
 The database is designed with STAR schema. The songplays table is the fact table that saves event data according to user's play information. Other dimension tables branch out and store specifics about users, songs, artists, and times.
 
-<img src="sparkify_schema.png" alt="schema" width="100"/>
+<img src="sparkify_schema.png" alt="schema" width="300"/>
