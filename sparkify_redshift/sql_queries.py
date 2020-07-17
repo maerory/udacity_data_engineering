@@ -134,14 +134,14 @@ SELECT
 	e.location as location,
 	e.userAgent as user_agent
 FROM staging_events e
-JOIN staging_songs s 
+JOIN staging_songs s
 ON e.song = s.title;
 """)
 
 user_table_insert = ("""
 INSERT INTO users (user_id, first_name, last_name, gender, level)
 SELECT
-	userId as user_id,
+	DISTINCT userId as user_id,
 	firstName as first_name,
 	lastName as last_name,
 	gender,
@@ -152,7 +152,7 @@ FROM staging_events;
 song_table_insert = ("""
 INSERT INTO songs (song_id, title, artist_id, year, duration)
 SELECT
-	song_id,
+	DISTINCT song_id,
 	title,
 	artist_id,
 	year,
@@ -162,8 +162,8 @@ FROM staging_songs;
 
 artist_table_insert = ("""
 INSERT INTO artists (artist_id, name, location, latitude, longitude)
-SELECT 
-	artist_id
+SELECT
+	DISTINCT artist_id
 	artist_name as name,
 	artists_location as location,
 	artist_latitude as latitude,
